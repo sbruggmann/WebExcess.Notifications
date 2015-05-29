@@ -1,0 +1,14 @@
+{
+    "name": "webexcess/notifications",
+    "type": "typo3-flow-package",
+    "description": "An asynchronous notification system for Neos CMS",
+    "license": "MIT",
+    "require": {
+        "typo3/neos": "~2.0"
+    },
+    "autoload": {
+        "psr-0": {
+            "WebExcess\\Notifications": "Classes"
+        }
+    }
+}

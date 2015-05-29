@@ -1,0 +1,16 @@
+-
+  name: 'WebExcess.Notifications add'
+  uriPattern:    'webexcess/notifications/add'
+  defaults:
+    '@package':    'WebExcess.Notifications'
+    '@controller': 'Notification'
+    '@action': 'add'
+  httpMethods: ['GET']
+-
+  name: 'WebExcess.Notifications script'
+  uriPattern:    'webexcess/notifications/get'
+  defaults:
+    '@package':    'WebExcess.Notifications'
+    '@controller': 'Notification'
+    '@action': 'get'
+  httpMethods: ['GET']

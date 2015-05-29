@@ -1,0 +1,26 @@
+TYPO3:
+  Flow:
+    aop:
+      globalObjects:
+        userInformation: TYPO3\Neos\Service\UserService
+
+    security:
+      authentication:
+        providers:
+          Typo3BackendProvider:
+            label: 'Neos Backend'
+            provider: 'PersistedUsernamePasswordProvider'
+            requestPatterns:
+              controllerObjectName: 'TYPO3\Neos\Controller\.*|TYPO3\Neos\Service\.*|TYPO3\Media\Controller\.*'
+            entryPoint: 'WebRedirect'
+            entryPointOptions:
+              routeValues:
+                '@package':    'TYPO3.Neos'
+                '@controller': 'Login'
+                '@action':     'index'
+                '@format':     'html'
+        authenticationStrategy: oneToken
+  Neos:
+    typoScript:
+      autoInclude:
+        'WebExcess.Notifications': TRUE
