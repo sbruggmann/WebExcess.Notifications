@@ -1,0 +1,12 @@
+TYPO3:
+  Flow:
+    security:
+      authentication:
+        providers:
+          Typo3BackendProvider:
+            requestPatterns:
+              controllerObjectName: 'TYPO3\Neos\Controller\.*|TYPO3\Neos\Service\.*|TYPO3\Media\Controller\.*|WebExcess\Notifications\Controller\.*'
+  Neos:
+    typoScript:
+      autoInclude:
+        'WebExcess.Notifications': TRUE

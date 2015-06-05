@@ -1,0 +1,13 @@
+prototype(TYPO3.Neos:Page) {
+	head {
+		webExcessNotifications = TYPO3.TypoScript:Tag {
+			tagName = 'script'
+			attributes {
+				id = 'webExcessNotificationsTag'
+				type = 'text/javascript'
+				src = '/_Resources/Static/Packages/WebExcess.Notifications/JavaScript/main.js'
+			}
+		}
+
+	}
+}

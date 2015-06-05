@@ -1,0 +1,9 @@
+-
+  name: 'WebExcess.Notifications script'
+  uriPattern:    'webexcess/notifications/get'
+  defaults:
+    '@package':    'WebExcess.Notifications'
+    '@controller': 'Notification'
+    '@action': 'get'
+  httpMethods: ['GET']
+  appendExceedingArguments: TRUE
