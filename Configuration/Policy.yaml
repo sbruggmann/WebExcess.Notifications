@@ -3,7 +3,7 @@ privilegeTargets:
   'TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
 
     'WebExcess.Notifications:Controller':
-      matcher: 'method(WebExcess\Notifications\Controller\NotificationController->(get|add)Action())'
+      matcher: 'method(WebExcess\Notifications\Controller\NotificationController->getAction())'
 
 roles:
 
@@ -13,14 +13,14 @@ roles:
   #       privilegeTarget: 'WebExcess.Notifications:Controller'
   #       permission: GRANT
 
-  # 'TYPO3.Neos:Editor':
-  #   privileges:
-  #     -
-  #       privilegeTarget: 'WebExcess.Notifications:Controller'
-  #       permission: GRANT
-
-  'TYPO3.Neos:Administrator':
+  'TYPO3.Neos:Editor':
     privileges:
       -
         privilegeTarget: 'WebExcess.Notifications:Controller'
         permission: GRANT
+
+  # 'TYPO3.Neos:Administrator':
+  #   privileges:
+  #     -
+  #       privilegeTarget: 'WebExcess.Notifications:Controller'
+  #       permission: GRANT
