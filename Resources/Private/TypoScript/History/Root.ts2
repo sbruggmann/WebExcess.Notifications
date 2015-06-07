@@ -1,0 +1,18 @@
+
+# Overwrite TYPO3.Neos:History Settings..
+# To get this working you have to change the TYPO3\Neos\Controller\Module\Management\HistoryController.php
+# from: $view->setTypoScriptPathPattern('resource://TYPO3.Neos/Private/TypoScript/Backend');
+# to:   $view->setTypoScriptPathPatterns(array('resource://TYPO3.Neos/Private/TypoScript/Backend', 'resource://WebExcess.Notifications/Private/TypoScript/History'));
+
+prototype(TYPO3.Neos:History.EventRenderer) {
+    notificationEvent {
+        condition = ${event.eventType == 'WebExcess.Notification'}
+        type = 'WebExcess:Notifications.Notification'
+    }
+}
+prototype(WebExcess:Notifications.Notification) < prototype(Template) {
+    templatePath = 'resource://WebExcess.Notifications/Private/Templates/History/Index.html'
+    sectionName = 'notificationElement'
+
+    event = ${event}
+}

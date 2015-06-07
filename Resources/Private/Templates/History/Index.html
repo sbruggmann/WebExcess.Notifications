@@ -1,0 +1,19 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace ts=TYPO3\TypoScript\ViewHelpers}
+
+<f:section name="notificationElement">
+    <f:if condition="{event.data.type}">
+        <div class="neos-history-event" id="{subEventType}-{f:format.identifier(value: event)}">
+            <div class="neos-history-event-time"><sub>{event.timestamp -> f:format.date(format: 'H:i')}</sub></div>
+            <div class="neos-history-event-description">
+                {event.data.type}: <strong>{event.data.title}</strong><br>
+                <f:if condition="{event.data.message}">
+                    "{event.data.message}"
+                    <f:if condition="{event.data.packageKey}">
+                        ({event.data.packageKey})
+                    </f:if>
+                </f:if>
+            </div>
+        </div>
+    </f:if>
+</f:section>
