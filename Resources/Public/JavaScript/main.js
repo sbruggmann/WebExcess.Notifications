@@ -15,7 +15,7 @@ if (typeof document.addEventListener === 'function') {
 					eval(xmlhttp.responseText);
 				}
 			}
-			xmlhttp.open('GET', '/webexcess/notifications/get',true);
+			xmlhttp.open('GET', 'neos/webexcess/notifications/get',true);
 			xmlhttp.send();
 		}
 		setInterval(webExcessNotificationsCheck, 8000);
