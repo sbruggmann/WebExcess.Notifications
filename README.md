@@ -40,3 +40,28 @@ public yourAction(){
 ```
 
 * Visit the Neos backend and the notification appears
+
+TYPO3.Neos:History Integration
+------------------------------
+
+To get this working you have to change the TYPO3\Neos\Controller\Module\Management\HistoryController.php
+
+from:
+
+```php
+$view->setTypoScriptPathPattern('resource://TYPO3.Neos/Private/TypoScript/Backend');
+```
+
+to:
+
+```php
+$view->setTypoScriptPathPatterns(array('resource://TYPO3.Neos/Private/TypoScript/Backend', 'resource://WebExcess.Notifications/Private/TypoScript/History'));
+```
+
+and Enable it:
+
+```yaml
+WebExcess:
+  Notifications:
+    addEventLog: TRUE
+```

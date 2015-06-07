@@ -1,13 +1,22 @@
-prototype(TYPO3.Neos:Page) {
-	head {
-		webExcessNotifications = TYPO3.TypoScript:Tag {
-			tagName = 'script'
-			attributes {
-				id = 'webExcessNotificationsTag'
-				type = 'text/javascript'
-				src = '/_Resources/Static/Packages/WebExcess.Notifications/JavaScript/main.js'
-			}
-		}
+# Include JS if the backend is active..
 
-	}
+prototype(TYPO3.Neos:Page) {
+    head {
+        webExcessNotificationsInclude = TYPO3.TypoScript:Case {
+            isBackend {
+                condition = ${node.context.workspace.name == 'live' ? false : true}
+                type = 'WebExcess.Notifications:Script'
+            }
+        }
+    }
+}
+prototype(WebExcess.Notifications:Script) < prototype(TYPO3.TypoScript:Tag) {
+    tagName = 'script'
+    attributes {
+        id = 'webExcessNotificationsTag'
+        type = 'text/javascript'
+        src = TYPO3.TypoScript:ResourceUri {
+            path = 'resource://WebExcess.Notifications/Public/JavaScript/main.js'
+        }
+    }
 }

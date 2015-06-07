@@ -1,6 +1,6 @@
 -
   name: 'WebExcess.Notifications script'
-  uriPattern:    'webexcess/notifications/get'
+  uriPattern:    'neos/webexcess/notifications/get'
   defaults:
     '@package':    'WebExcess.Notifications'
     '@controller': 'Notification'
