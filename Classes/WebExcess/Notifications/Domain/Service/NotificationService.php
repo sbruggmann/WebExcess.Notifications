@@ -33,6 +33,25 @@ class NotificationService {
 	 */
 	protected $notificationRepository;
 
+    /**
+     * @var \TYPO3\Neos\EventLog\Domain\Service\EventEmittingService
+     * @Flow\Inject
+     */
+    protected $eventService;
+
+    /**
+     * @var array
+     */
+    protected $settings;
+
+    /**
+     * @param array $settings
+     * @return void
+     */
+    public function injectSettings(array $settings) {
+        $this->settings = $settings;
+    }
+
 	/**
 	 * add notifications with javascript
 	 * 
@@ -49,7 +68,10 @@ class NotificationService {
 		$newNotification->setMessage( $message );
 
 		$this->notificationRepository->add( $newNotification );
-		$this->persistenceManager->persistAll();
+
+        if( isset($this->settings['addEventLog']) && $this->settings['addEventLog']===TRUE ){
+            $this->eventService->emit('WebExcess.Notification', array('type'=>$type, 'title'=>$title, 'packageKey'=>$packageKey, 'message'=>$message));
+        }
 	}
 
 	/**

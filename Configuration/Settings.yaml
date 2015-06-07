@@ -10,3 +10,6 @@ TYPO3:
     typoScript:
       autoInclude:
         'WebExcess.Notifications': TRUE
+WebExcess:
+  Notifications:
+    addEventLog: FALSE
