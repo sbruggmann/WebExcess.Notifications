@@ -14,24 +14,40 @@ use TYPO3\Flow\Cli\CommandController;
  */
 class NotificationCommandController extends CommandController {
 
-	/**
-	 * @var \WebExcess\Notifications\Domain\Service\NotificationService
-	 * @Flow\Inject
-	 */
-	protected $notificationService;
+    /**
+     * @var \WebExcess\Notifications\Domain\Service\NotificationService
+     * @Flow\Inject
+     */
+    protected $notificationService;
 
-	/**
-	 * add a notification
-	 * 
-	 * @param string $type
-	 * @param string $title
-	 * @param string $packageKey
-	 * @param string $message
-	 * 
-	 * @return void
-	 */
-	public function addCommand($type, $title, $packageKey='', $message='') {
-		$this->notificationService->addNotification($type, $title, $packageKey, $message);
-	}
+    /**
+     * add a notification
+     *
+     * @param string $type "info", "warning" or "error"
+     * @param string $title string
+     * @param string $packageKey string
+     * @param string $message string
+     * @param string $target "Users:usernamea,usernameb" or "Roles:TYPO3.Neos:Editor,TYPO3.Neos:Administrator" or "Roles:TYPO3.Neos+:Editor,TYPO3.Neos:Administrator!" etc.
+     *
+     * @return void
+     */
+    public function addCommand($type, $title, $packageKey='', $message='', $target='') {
+        $this->notificationService->addNotification(
+            $type,
+            stripcslashes($title),
+            $packageKey,
+            stripcslashes($message),
+            stripcslashes($target)
+        );
+    }
+
+    /**
+     * remove all notifications
+     *
+     * @return void;
+     */
+    public function removeAllCommand(){
+        $this->notificationService->removeNotifications();
+    }
 
 }
